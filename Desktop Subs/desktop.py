@@ -69,7 +69,8 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe(topic_sub_hum)
     client.subscribe(topic_sub_air_quality)
     client.subscribe(topic_sub_heart_rate)
-    plots.axis.figure.canvas.draw()
+    for plot in plots.values():
+        plot.axis.figure.canvas.draw()
 
 def on_message(client, userdata, msg):
     global data, plots
